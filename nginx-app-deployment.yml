@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-app-deployment
+  labels:
+    app: demo-voting-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: nginx-app-pod
+      app: demo-voting-app
+  template:
+    metadata:
+      name: nginx-app-pod
+      labels:
+        name: nginx-app-pod
+        app: demo-voting-app
+
+    spec:
+      containers:
+      - name: nginx-app
+        image: asia.gcr.io/microservice-baru/lumen_nginx

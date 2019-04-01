@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-app-deployment
+  labels:
+    app: demo-voting-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: php-app-pod
+      app: demo-voting-app
+  template:
+    metadata:
+      name: php-app-pod
+      labels:
+        name: php-app-pod
+        app: demo-voting-app
+
+    spec:
+      containers:
+      - name: php-app
+        image: asia.gcr.io/microservice-baru/lumen_php
+        ports:
+        - containerPort: 9000

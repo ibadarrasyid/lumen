@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  labels:
+    app: demo-voting-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mysql-pod
+      app: demo-voting-app
+  template:
+    metadata:
+      name: mysql-pod
+      labels:
+        name: mysql-pod
+        app: demo-voting-app
+
+    spec:
+      containers:
+      - name: mysql
+        image: asia.gcr.io/microservice-baru/lumen_mysql
+        ports:
+        - containerPort: 3306
