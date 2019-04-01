@@ -19,5 +19,7 @@ spec:
 
     spec:
       containers:
-      - name: nginx-app
+      - name: nginx-app 
         image: asia.gcr.io/microservice-baru/lumen_nginx
+        ports:
+        - containerPort: 80
